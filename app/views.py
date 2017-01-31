@@ -30,18 +30,18 @@ def results():
     result_count_upper_bound = "50"
     hit_count = nix.search(brand_id=brand, cal_min=50, results="0:50", fields="*").json()['total_hits']
     while len(results) < hit_count:
-      result_range = result_count_lower_bound + ":" + result_count_upper_bound
-      search = nix.search(brand_id=brand, cal_min=50, results=result_range, fields="*").json()['hits']
+        result_range = result_count_lower_bound + ":" + result_count_upper_bound
+        search = nix.search(brand_id=brand, cal_min=50, results=result_range, fields="*").json()['hits']
 
-      for item in search:
-        try:
-          item['points'] = round((item['fields']['nf_calories'] + (item['fields']['nf_saturated_fat'] * 9) + (item['fields']['nf_sugars'] * 4) - (3.2 * item['fields']['nf_protein'])) / 33)
-        except:
-          item['points'] = 'NA'
+        for item in search:
+            try:
+                item['points'] = round((item['fields']['nf_calories'] + (item['fields']['nf_saturated_fat'] * 9) + (item['fields']['nf_sugars'] * 4) - (3.2 * item['fields']['nf_protein'])) / 33)
+            except:
+                item['points'] = 'NA'
         results.append(item)
 
-      result_count_lower_bound = str(int(result_count_lower_bound) + 50)
-      result_count_upper_bound = str(int(result_count_upper_bound) + 50)
+        result_count_lower_bound = str(int(result_count_lower_bound) + 50)
+        result_count_upper_bound = str(int(result_count_upper_bound) + 50)
 
     print(len(results))
     print(results)
