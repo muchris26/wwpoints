@@ -24,7 +24,7 @@ def search():
     brand_search = nix.brand().search(query=search_term).json()
 
     return render_template("brand_results.html",
-                           title='WW Points - Brand Results',
+                           title='Brand Results',
                            results=brand_search['hits'])
 
 @app.route('/results')
@@ -52,6 +52,6 @@ def results():
     print(len(results))
     print(results)
     return render_template("search_results.html",
-                           title='WW Points - Search Results',
+                           title='Search Results',
                            total_hits = len(results),
                            results=results)
