@@ -1,5 +1,6 @@
 from app import app
 from flask import render_template, request
+import os
 
 from nutritionix import Nutritionix
 
@@ -9,7 +10,7 @@ from nutritionix import Nutritionix
 # nix = Nutritionix(app_id=NUTRITIONIX_API_ID, api_key=NUTRITIONIX_API_KEY)
 
 # Use when deployed to Heroku
-nix = Nutritionix(app_id=process.env.NUTRITIONIX_API_ID, api_key=process.env.NUTRITIONIX_API_KEY)
+nix = Nutritionix(app_id=os.environ.get(NUTRITIONIX_API_ID), api_key=os.environ.get(NUTRITIONIX_API_KEY))
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index')
