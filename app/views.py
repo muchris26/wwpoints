@@ -4,12 +4,12 @@ from flask import render_template, request
 from nutritionix import Nutritionix
 
 # Use when deployed locally
-NUTRITIONIX_API_ID = open('env_vars/nutritionix_id', 'r')
-NUTRITIONIX_API_KEY = open('env_vars/nutritionix_key', 'r')
-nix = Nutritionix(app_id=NUTRITIONIX_API_ID, api_key=NUTRITIONIX_API_KEY)
+# NUTRITIONIX_API_ID = open('env_vars/nutritionix_id', 'r')
+# NUTRITIONIX_API_KEY = open('env_vars/nutritionix_key', 'r')
+# nix = Nutritionix(app_id=NUTRITIONIX_API_ID, api_key=NUTRITIONIX_API_KEY)
 
 # Use when deployed to Heroku
-# nix = Nutritionix(app_id=process.env.NUTRITIONIX_API_ID, api_key=process.env.NUTRITIONIX_API_KEY)
+nix = Nutritionix(app_id=process.env.NUTRITIONIX_API_ID, api_key=process.env.NUTRITIONIX_API_KEY)
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index')
