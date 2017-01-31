@@ -1,15 +1,8 @@
 from app import app
 from flask import render_template, request
 import os
-
 from nutritionix import Nutritionix
 
-# Use when deployed locally
-# NUTRITIONIX_API_ID = open('env_vars/nutritionix_id', 'r')
-# NUTRITIONIX_API_KEY = open('env_vars/nutritionix_key', 'r')
-# nix = Nutritionix(app_id=NUTRITIONIX_API_ID, api_key=NUTRITIONIX_API_KEY)
-
-# Use when deployed to Heroku
 nix = Nutritionix(app_id=os.environ.get('NUTRITIONIX_API_ID'), api_key=os.environ.get('NUTRITIONIX_API_KEY'))
 
 @app.route('/', methods=['GET', 'POST'])
@@ -54,5 +47,5 @@ def results():
     print(results)
     return render_template("search_results.html",
                            title='Search Results',
-                           total_hits = len(results),
+                           total_hits=len(results),
                            results=results)
