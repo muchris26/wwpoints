@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+      <ul class="list-group">
+      <li class="list-group-item active">Brand Results</li>
+      {% for result in results %}
+        <li class="list-group-item"><a href="/results?id={{result['fields']['_id']}}">{{ result['fields']['name'] }}</a></li>
+      {% endfor %}
+      </ul>
+
+{% endblock %}

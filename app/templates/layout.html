@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>{{ title }} - WW App</title>
+    <link rel="stylesheet" href="static/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="static/plugins/jquery-3.1.1.min.js"></script>
+    <script src="static/plugins/jquery.tablesorter.js"></script>
+    <script src="static/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/js/js.js"></script>
+  </head>
+  <body>
+      <h1>{{ title }}</h1>
+      <p><a href='/'><button class="btn-primary">New Search</button></a></p>
+      {% block content %}{% endblock %}
+  </body>
+</html>

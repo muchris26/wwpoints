@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+      <p>Total Hits: {{ total_hits }}.</p>
+      <table id="myTable" class="tablesorter table table-striped">
+      <thead>
+      <tr><th>Item Name</th><th>Points</th><th>Calories</th><th>Sugar</th><th>Sat Fat</th><th>Protein</th></tr>
+      </thead>
+      <tbody>
+      {% for result in results %}
+        <tr>
+          <td>{{ result['fields']['item_name'] }}</td>
+          <td>{{ result['points'] }}</td>
+          <td>{{ result['fields']['nf_calories'] }}</td>
+          <td>{{ result['fields']['nf_sugars'] }}</td>
+          <td>{{ result['fields']['nf_saturated_fat'] }}</td>
+          <td>{{ result['fields']['nf_protein'] }}</td>
+        </tr>
+      {% endfor %}   
+      </tbody>
+      </table>
+{% endblock %}
