@@ -29,6 +29,8 @@ def results():
     result_count_lower_bound = "0"
     result_count_upper_bound = "50"
     hit_count = nix.search(brand_id=brand, cal_min=50, results="0:50", fields="*").json()['total_hits']
+    if hit_count > 500:
+        hit_count = 500
     while len(results) < hit_count:
         result_range = result_count_lower_bound + ":" + result_count_upper_bound
         search = nix.search(brand_id=brand, cal_min=50, results=result_range, fields="*").json()['hits']
