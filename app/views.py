@@ -40,13 +40,11 @@ def results():
                 item['points'] = round((item['fields']['nf_calories'] + (item['fields']['nf_saturated_fat'] * 9) + (item['fields']['nf_sugars'] * 4) - (3.2 * item['fields']['nf_protein'])) / 33)
             except:
                 item['points'] = 'NA'
-        results.append(item)
+            results.append(item)
 
         result_count_lower_bound = str(int(result_count_lower_bound) + 50)
         result_count_upper_bound = str(int(result_count_upper_bound) + 50)
 
-    print(len(results))
-    print(results)
     return render_template("search_results.html",
                            title='Search Results',
                            total_hits=len(results),
